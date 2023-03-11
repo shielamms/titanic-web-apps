@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - my-network
+  my-app:
+    depends_on:
+      - redis
+    image: my-app:latest
+    ports:
+      - "5001:5000"
+    environment:
+      REDIS_HOST: "redis"
+    networks:
+      - my-network
+
+networks:
+  my-network:
