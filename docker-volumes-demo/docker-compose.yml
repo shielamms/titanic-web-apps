@@ -7,13 +7,18 @@ services:
     ports:
       - "5001:5000"
     volumes:
-      - my-shared-volume:/data
+      - type: volume
+        source: my-shared-volume
+        target: /data
   dv-app2:
     image: dv-app2:latest
     ports:
       - "5002:5000"
     volumes:
-      - my-shared-volume:/data
+      - type: volume
+        source: my-shared-volume
+        target: /data
+        read_only: true
 
 volumes:
   my-shared-volume:
