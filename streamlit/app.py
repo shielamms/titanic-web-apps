@@ -35,9 +35,9 @@ AGE_BUCKETS = OrderedDict({
 })
 
 
-class App(object):
+class TitanicApp(object):
 
-    def __init__(self, model_dir='../models/titanic_model.sav'):
+    def __init__(self, model_dir):
         self.form_pclass = None
         self.form_sex = None
         self.form_title = None
@@ -45,7 +45,7 @@ class App(object):
         self.form_age = None
         self.form_sibsp = None
         self.form_parch = None
-        self.model = App.load_model(model_dir)
+        self.model = TitanicApp.load_model(model_dir)
 
     def render_page(self):
         st.title('Would you have survived the Titanic?')
@@ -132,5 +132,5 @@ class App(object):
 
 
 if __name__ == '__main__':
-    app = App()
+    app = TitanicApp('../models/titanic_model.sav')
     app.render_page()
